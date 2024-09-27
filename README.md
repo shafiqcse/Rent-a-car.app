@@ -1,66 +1,34 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+1. Introduction: "Hello everyone, and welcome to the demo of our Car Rental Web Application. My name is Md. Shafiqul Islam, and I’m excited to take you through this project that we’ve been working on. Our goal was to create a seamless and user-friendly platform that simplifies the process of renting a car for both customers and administrators."
 
-## About Laravel
+2. Problem Statement: "We all know how challenging it can be to find and book a car for rental, especially with outdated systems and complex processes. This application addresses those challenges by offering an intuitive interface for customers to browse, book, and manage their rentals, while providing a powerful admin dashboard to manage the entire fleet effortlessly."
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+3. Project Overview: "In today’s demo, I will be showcasing the two primary components of our application:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The Admin Dashboard, which allows administrators to manage cars, rentals, and customer details.
+The Frontend Customer Interface, where users can browse available cars, make bookings, and manage their rentals.
+We’ve implemented role-based access control to ensure secure and appropriate access for different types of users."
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+4. Tech Stack: "This project is built using Laravel for the backend, Tailwind CSS for the frontend styling, and a MySQL database. We’ve chosen this stack for its robustness and flexibility, allowing us to create a scalable and maintainable application."
 
-## Learning Laravel
+5. What to Expect: "During this demo, I will walk you through the key features of the Admin Dashboard, including car management and rental approvals. Then, we’ll switch to the customer interface, where I’ll show you how users can browse cars, book rentals, and manage their bookings. We’ll also cover some additional features like email notifications and responsive design."
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+6. Transition: "So, let’s dive right in, starting with the Admin Dashboard. Here, we’ll see how easy it is to manage the car fleet and oversee rental operations."
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Live Demo video Link:
 
-## Laravel Sponsors
+    https://drive.google.com/file/d/1umcxg_SWGSBPWrNM7l5IYuAinOzk7ToF/view?usp=sharing
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+Customer Details:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    user Name = Customer@me
+    Password = password
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Admin Details:
 
-## Code of Conduct
+    user Name = admin@me
+    Password = password
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

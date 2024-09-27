@@ -1,39 +1,42 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cars = Car::all();
-//        $query = Car::query();
-//
-//        // Apply filters based on request parameters
-//        if ($request->filled('car_type')) {
-//            $query->where('type', 'like', '%' . $request->input('car_type') . '%');
-//        }
-//
-//        if ($request->filled('brand')) {
-//            $query->where('brand', 'like', '%' . $request->input('brand') . '%');
-//        }
-//
-//        if ($request->filled('max_price')) {
-//            $query->where('daily_rent_price', '<=', $request->input('max_price'));
-//        }
-//
-//        // Get the filtered cars
-//        $cars = $query->get();
+        $query = Car::query(); // Start a query builder instance
 
-        // Pass the filtered cars to the view
+        // Filter by brand
+        if ($request->has('brand') && $request->brand != null) {
+            $query->where('brand', 'like', '%' . $request->brand . '%');
+        }
+
+        // Filter by model
+        if ($request->has('model') && $request->model != null) {
+            $query->where('model', 'like', '%' . $request->model . '%');
+        }
+
+        // Filter by minimum price
+        if ($request->has('min_price') && $request->min_price != null) {
+            $query->where('daily_rent_price', '>=', $request->min_price);
+        }
+
+        // Filter by maximum price
+        if ($request->has('max_price') && $request->max_price != null) {
+            $query->where('daily_rent_price', '<=', $request->max_price);
+        }
+
+        $cars = $query->get(); // Fetch filtered cars from the database
+
         return view('cars.index', compact('cars'));
     }
 
@@ -42,7 +45,6 @@ class CarController extends Controller
      */
     public function create()
     {
-
         return view('cars.create');
     }
 
@@ -51,7 +53,6 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the form data (you can add more validation rules as needed)
         $request->validate([
             'name' => 'required|string|max:255',
             'brand' => 'required|string|max:255',
@@ -59,18 +60,13 @@ class CarController extends Controller
             'year' => 'required|integer|min:1900|max:' . date('Y'),
             'car_type' => 'required|string|max:255',
             'daily_rent_price' => 'required|numeric',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Image validation
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Handle the image upload (if you're storing the image)
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images/cars', 'public');
         }
 
-        // Map the availability checkbox value (1 if checked, 0 if unchecked)
-        $availability = $request->has('availability') ? 1 : 0;
-
-        // Create the new car entry in the database
         Car::create([
             'name' => $request->input('name'),
             'brand' => $request->input('brand'),
@@ -78,20 +74,19 @@ class CarController extends Controller
             'year' => $request->input('year'),
             'car_type' => $request->input('car_type'),
             'daily_rent_price' => $request->input('daily_rent_price'),
-            'availability' => $availability,
-            'image' => $imagePath, // Image path saved to the database
+            'availability' => $request->has('availability') ? 1 : 0,
+            'image' => $imagePath ?? null,
         ]);
 
-        // Redirect to a page, or return a response
         return redirect()->route('cars.index')->with('success', 'Car created successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show($id)
     {
-        $car = Car::find($id);
+        // Find the car by its ID, or throw a 404 error if not found
+        $car = Car::findOrFail($id);
+
+        // Return the view and pass the car object to it
         return view('cars.show', compact('car'));
     }
 
@@ -100,54 +95,54 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        $car = Car::findOrFail($car->id);
         return view('cars.edit', compact('car'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-
     public function update(Request $request, Car $car)
     {
         $request->validate([
-            'name' => 'required',
-            'brand' => 'required',
-            'model' => 'required',
-            'year' => 'required|integer',
-            'car_type' => 'required',
+            'name' => 'required|string|max:255',
+            'brand' => 'required|string|max:255',
+            'model' => 'required|string|max:255',
+            'year' => 'required|integer|min:1900|max:' . date('Y'),
+            'car_type' => 'required|string|max:255',
             'daily_rent_price' => 'required|numeric',
-            'availability' => 'required|boolean',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // Update the car fields
-        $car->name = $request->name;
-        $car->brand = $request->brand;
-        $car->model = $request->model;
-        $car->year = $request->year;
-        $car->car_type = $request->car_type;
-        $car->daily_rent_price = $request->daily_rent_price;
-        $car->availability = $request->has('availability') ? 1 : 0; // Checkbox handling
+        $car->name = $request->input('name');
+        $car->brand = $request->input('brand');
+        $car->model = $request->input('model');
+        $car->year = $request->input('year');
+        $car->car_type = $request->input('car_type');
+        $car->daily_rent_price = $request->input('daily_rent_price');
+        $car->availability = $request->has('availability') ? 1 : 0;
 
-        $car->update($request->except(['image']));
-
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        if ($request->hasFile('image')) {
+            if ($car->image) {
+                Storage::disk('public')->delete($car->image); // Delete old image
+            }
             $imagePath = $request->file('image')->store('images/cars', 'public');
-            $car->image = '/storage/' . $imagePath;
-            $car->save();
+            $car->image = $imagePath;
         }
 
-        return redirect()->route('cars.index')->with('success', 'Car updated successfully.');
+        $car->save();
+
+        return redirect()->route('cars.index')->with('success', 'Car updated successfully!');
     }
-
-
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Car $car)
     {
-        $car = Car::find($id);
+        if ($car->image) {
+            Storage::disk('public')->delete($car->image);
+        }
         $car->delete();
         return redirect()->route('cars.index')->with('success', 'Car deleted successfully.');
     }

@@ -66,12 +66,12 @@
                 <option value="Pending" {{ $rental->status == 'Pending' ? 'selected' : '' }}>Pending</option>
                 <option value="Confirmed" {{ $rental->status == 'Confirmed' ? 'selected' : '' }}>Confirmed</option>
                 <option value="Cancelled" {{ $rental->status == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
-                <option value="Completed" {{ $rental->status == 'Completed' ? 'selected' : '' }}>Completed</option>
+                <option value="ended" {{ $rental->status == 'ended' ? 'selected' : '' }}>Completed</option>
             </select>
         </div>
 
         <div>
-            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Update Rental</button>
+            <button type="submit" class="bg-orange-500 text-gray-800 hover:text-white font-medium rounded-md px-5 py-3">Update Rental</button>
         </div>
     </form>
 </div>

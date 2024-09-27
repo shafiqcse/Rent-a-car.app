@@ -4,7 +4,7 @@
     <div class="container mx-auto py-8">
         <div class="flex justify-between mb-6">
             <h1 class="text-3xl">{{ $car->name }} - Details</h1>
-            <a href="{{ route('cars.index') }}" class="bg-blue-500 text-white py-2 px-4 rounded">Back to List</a>
+            <a href="{{ route('cars.index') }}" class="bg-orange-500 text-gray-800 hover:text-white font-medium rounded-md px-5 py-3">BACK TO LIST</a>
         </div>
 
         <div class="bg-white rounded-lg shadow p-6">
@@ -24,11 +24,11 @@
             </div>
 
             <div class="mt-6">
-                <a href="{{ route('cars.edit', $car->id) }}" class="bg-yellow-500 text-white py-2 px-4 rounded">Edit</a>
+                <a href="{{ route('cars.edit', $car->id) }}" class="bg-orange-500 text-gray-800 hover:text-white font-medium rounded-md px-5 py-2">Edit</a>
                 <form action="{{ route('cars.destroy', $car->id) }}" method="POST" class="inline-block ml-2">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded">Delete</button>
+                    <button type="submit" class="bg-red-500 text-white py-1.5 px-4 rounded">Delete</button>
                 </form>
             </div>
         </div>

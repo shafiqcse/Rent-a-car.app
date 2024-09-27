@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2024 at 03:46 PM
+-- Generation Time: Sep 27, 2024 at 05:16 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -70,9 +70,11 @@ CREATE TABLE `cars` (
 --
 
 INSERT INTO `cars` (`id`, `name`, `brand`, `model`, `year`, `car_type`, `daily_rent_price`, `availability`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Honda SUV 400', 'Honda', 'Honda CBR 550', 2024, 'SUV', 100.00, 1, 'images/cars/CUWR6vngBKDS7F0iWRtSNgWS5IMptUkwAiY13j4T.png', '2024-09-19 09:14:31', '2024-09-19 09:14:31'),
-(2, 'Honda SUV 500', 'Honda', 'Honda CBR 550', 2024, 'SUV', 100.00, 1, 'images/cars/pC2Xe2a6X6zMjaq4HrVo6HVUxLuUyY738Wg2uCJ6.png', '2024-09-19 09:14:46', '2024-09-19 09:14:46'),
-(3, 'Honda SUV 600', 'Honda', 'Honda CBR 550', 2024, 'SUV', 1000.00, 1, 'images/cars/WmhtQgWjrzzKacX7DXClhKF6SuFOfIV63llkENTz.png', '2024-09-19 09:14:59', '2024-09-19 09:14:59');
+(1, 'Honda SUV 400', 'Honda', 'Honda CBR 550', 2024, 'SUV', 400.00, 1, 'images/cars/eF4xAWhGoi5KfgMCcHJTbeHYecfKXf7dJKHNJu62.png', '2024-09-19 09:14:31', '2024-09-27 09:04:14'),
+(2, 'Honda SUV 500', 'Honda', 'Honda CBR 550', 2024, 'SUV', 100.00, 1, 'images/cars/NtASD7GtCYYQVQ32bTbyrSoT6N4tiZg7AFECKugF.png', '2024-09-19 09:14:46', '2024-09-27 05:58:37'),
+(3, 'Honda City', 'Honda', 'Honda City', 2024, 'SUV', 100.00, 1, 'images/cars/JmqFaijcbhmQwRrbKN5FfNLWTbN6k5yHmZPOh2Q2.png', '2024-09-19 09:14:59', '2024-09-27 05:59:42'),
+(4, 'Honda SUV 800', 'Honda', 'Honda CBR 600', 2024, 'SUV', 100.00, 1, 'images/cars/jq4YFmUpaRBlaOnwX7WWUUE9PPKcHnVixYGTNV0L.png', '2024-09-25 08:02:32', '2024-09-25 08:02:32'),
+(5, 'Kia optima 456', 'Optima', 'Kia optima', 2024, 'Sports', 100.00, 1, 'images/cars/ECRMKwvhH3JjTMlfJ18lGRKIBSvTl60ET0LpZR2z.png', '2024-09-25 08:04:36', '2024-09-25 08:07:26');
 
 -- --------------------------------------------------------
 
@@ -183,9 +185,14 @@ CREATE TABLE `rentals` (
 --
 
 INSERT INTO `rentals` (`id`, `user_id`, `car_id`, `start_date`, `end_date`, `total_cost`, `status`, `created_at`, `updated_at`) VALUES
-(2, 2, 2, '2024-09-20', '2024-09-21', 200.00, 'pending', '2024-09-19 09:16:25', '2024-09-19 11:12:42'),
-(3, 2, 3, '2024-09-19', '2024-09-20', 2000.00, 'confirmed', '2024-09-19 11:11:32', '2024-09-19 11:11:39'),
-(4, 1, 1, '2024-09-19', '2024-09-21', 300.00, 'pending', '2024-09-19 11:12:23', '2024-09-19 11:12:23');
+(14, 1, 3, '2024-10-03', '2024-10-03', 100.00, 'ended', '2024-09-25 07:46:31', '2024-09-27 07:09:57'),
+(15, 2, 3, '2024-10-12', '2024-10-12', 100.00, 'cancelled', '2024-09-25 07:57:08', '2024-09-27 08:59:57'),
+(16, 2, 5, '2024-10-12', '2024-10-12', 100.00, 'confirmed', '2024-09-25 09:03:48', '2024-09-25 09:12:15'),
+(17, 2, 5, '2024-09-26', '2024-09-26', 100.00, 'confirmed', '2024-09-25 09:04:12', '2024-09-25 09:42:22'),
+(18, 2, 5, '2024-09-25', '2024-09-25', 100.00, 'ended', '2024-09-25 09:07:30', '2024-09-25 09:33:04'),
+(19, 2, 3, '2024-09-27', '2024-09-27', 100.00, 'ended', '2024-09-25 09:10:59', '2024-09-25 09:32:48'),
+(21, 2, 5, '2024-11-08', '2024-11-08', 100.00, 'cancelled', '2024-09-27 07:31:31', '2024-09-27 07:31:44'),
+(23, 1, 5, '2024-11-15', '2024-11-15', 100.00, 'pending', '2024-09-27 09:03:10', '2024-09-27 09:03:10');
 
 -- --------------------------------------------------------
 
@@ -207,9 +214,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('hFeEbrdnrc67Cdg8biIg7khzedWVmyfgwB5Qxcms', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiYlpybGQ1SnlnQ2tLMHhubTd2eEQ2eGFQRjl2eWFZdWVKWDdMRjNjNSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZW50YWxzL2NyZWF0ZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1726770490),
-('tFtavOdKXYRwnbPTb9fsvDscfZOz4fhyHTCpNhQC', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOGxUdXJVVzZlOVVkZ1pEaHF2bm9SQUdnYkdlSjNCVGMzVXZMUEFkUCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZW50YWxzL2NyZWF0ZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1726766279),
-('TrGFRjgyKFpzRM95J6OBx2tWgv1t5tJlOPrUX6cK', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiZHdnWDRRSnhvZnV2R014dlA4cW1yc084RndTQWxFeGhId1JZQzl2dSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQiO31zOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjI5OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvcmVudGFscyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1726770619);
+('G24ppJsnXKTpWpqmvUlL2QjhX4d4xNCQuNuNZwYS', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidXRwU1dQdHpzcHQ0Yk03c253aWQ4R25BMEhtQjhhWmlxS3RFMndvTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hbGxjYXJzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727444552),
+('osbrhe9wHmd4tCrkQcstzQwtwX3cXBDp8VjwXZOV', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidzNtam1yWU53REJHZkg2bWk5eTdVNXdZWFB3MFJ5bFJibWhiSDREZiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9kYXNoYm9hcmQiO31zOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjM2OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvcmVudGFscy9jcmVhdGUiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1727442857),
+('OYrPrpY2YsrorHc2C0ufYd0t66f7MS440JPgRxzA', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaWQyNGhSOFZJdk9HQ3ZzUVFsQWdjRlF5SU1VZThlcUo2REw1bTYyRyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1727449521);
 
 -- --------------------------------------------------------
 
@@ -233,7 +240,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin@me', '$2y$12$P.WIs2/PQlnQpR7Ov6nDX.TlGiIRwS78YoSYQ7eGaIRzYxkVQbG6a', 'admin', '2024-09-19 09:13:06', '2024-09-19 09:13:06'),
-(2, 'customer', 'customer@me', '$2y$12$0oTkIzEJTA6KRgnKINCm0uoUnlkTNoHpaDIF4M24TdnIUEE9EJEcW', 'customer', '2024-09-19 09:13:29', '2024-09-19 09:13:29');
+(2, 'customer', 'customer@me', '$2y$12$0oTkIzEJTA6KRgnKINCm0uoUnlkTNoHpaDIF4M24TdnIUEE9EJEcW', 'customer', '2024-09-19 09:13:29', '2024-09-19 09:13:29'),
+(3, 'customer1', 'customer1@me', '$2y$12$KFFibXVM.59d5Co8u/ttBe0M4wJ65yahA0ITHlQSMvggPqFR0EYlS', 'customer', '2024-09-27 07:58:12', '2024-09-27 07:58:12');
 
 --
 -- Indexes for dumped tables
@@ -320,7 +328,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -344,13 +352,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `rentals`
 --
 ALTER TABLE `rentals`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

@@ -2,7 +2,7 @@
 
 <div class="flex justify-center min-h-screen items-center">
     <div class="max-w-lg w-full bg-white shadow-md rounded-lg p-6">
-        <h1 class="text-2xl font-bold mb-6 text-center">Create New Car</h1>
+        <h1 class="text-2xl font-bold mb-6 text-center">CREATE NEW CAR</h1>
 
         <form action="{{ route('cars.store') }}" method="post" enctype="multipart/form-data" class="space-y-4">
             @csrf
@@ -48,7 +48,7 @@
 
             <div>
                 <button type="submit" class="inline-flex items-center w-full justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Create
+                    CREATE
                 </button>
             </div>
         </form>

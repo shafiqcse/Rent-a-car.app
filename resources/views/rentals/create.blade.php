@@ -4,69 +4,77 @@
 </head>
 <body class="bg-white flex items-center justify-center h-screen">
 <div class="w-full max-w-lg">
-    <h1 class="text-2xl font-semibold mb-6">Add Rental</h1>
+    <h1 class="text-2xl font-semibold mb-6">ADD RENTAL</h1>
 
     <!-- Rental create form -->
     <form action="{{ route('rentals.store') }}" method="POST" class="space-y-4">
         @csrf
 
-        <!-- Select User -->
-        <div>
-            <label class="block text-gray-700">Customer</label>
-            <select name="user_id" id="user_id" required class="w-full border border-gray-300 p-2 rounded">
-                <option value="">-- Choose User --</option>
-                @foreach($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                @endforeach
-            </select>
-        </div>
-
         <!-- Select Car -->
+        <!-- Show custom error message for existing booking conflicts -->
+        @if ($errors->any())
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+                <strong class="font-bold">Error!</strong>
+                <span class="block sm:inline">{{ $errors->first() }}</span>
+            </div>
+        @endif
         <div>
-            <label class="block text-gray-700">Car</label>
-            <select name="car_id" id="car_id" required class="w-full border border-gray-300 p-2 rounded" onchange="calculateTotalCost()">
+            <label class="block text-gray-700">Car Name</label>
+            <select name="car_id" id="car_id" required class="w-full border border-gray-300 p-2 rounded @error('car_id') border-red-500 @enderror" onchange="calculateTotalCost()">
                 <option value="">-- Choose Car --</option>
                 @foreach($cars as $car)
-                    <option value="{{ $car->id }}" data-daily-rate="{{ $car->daily_rate }}">{{ $car->name }}</option>
+                    <option value="{{ $car->id }}" data-daily-rate="{{ $car->daily_rate }}" {{ old('car_id') == $car->id ? 'selected' : '' }}>{{ $car->name }}</option>
                 @endforeach
             </select>
+            <!-- Show validation error message for car_id -->
+            @error('car_id')
+            <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
         </div>
 
         <!-- Start Date -->
         <div>
             <label class="block text-gray-700">Start Date</label>
-            <input type="date" name="start_date" id="start_date" required class="w-full border border-gray-300 p-2 rounded" onchange="calculateTotalCost()">
+            <input type="date" name="start_date" id="start_date" value="{{ old('start_date') }}" required class="w-full border border-gray-300 p-2 rounded @error('start_date') border-red-500 @enderror" onchange="calculateTotalCost()">
+            <!-- Show error message for start_date -->
+            @error('start_date')
+            <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
         </div>
 
         <!-- End Date -->
         <div>
             <label class="block text-gray-700">End Date</label>
-            <input type="date" name="end_date" id="end_date" required class="w-full border border-gray-300 p-2 rounded" onchange="calculateTotalCost()">
-        </div>
-
-        <!-- Total Cost (calculated automatically) -->
-        <div>
-            <label class="block text-gray-700">Total Cost</label>
-            <input type="text" id="total_cost" readonly class="w-full border border-gray-300 p-2 rounded bg-gray-100">
+            <input type="date" name="end_date" id="end_date" value="{{ old('end_date') }}" required class="w-full border border-gray-300 p-2 rounded @error('end_date') border-red-500 @enderror" onchange="calculateTotalCost()">
+            <!-- Show error message for end_date -->
+            @error('end_date')
+            <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
         </div>
 
         <!-- Status -->
         <div>
-            <label class="block text-gray-700">Status</label>
-            <select name="status" required class="w-full border border-gray-300 p-2 rounded">
-                <option value="">-- Choose Status --</option>
-                <option value="Pending">Pending</option>
-                <option value="Confirmed">Confirmed</option>
-                <option value="Cancelled">Cancelled</option>
-                <option value="Cancelled">Ended</option>
-            </select>
+{{--            <label class="block text-gray-700">Status</label>--}}
+{{--            <select name="status" required class="w-full border border-gray-300 p-2 rounded @error('status') border-red-500 @enderror">--}}
+{{--                <option value="">-- Choose Status --</option>--}}
+{{--                <option value="Pending" {{ old('status') == 'Pending' ? 'selected' : '' }}>Pending</option>--}}
+{{--                <option value="Confirmed" {{ old('status') == 'Confirmed' ? 'selected' : '' }}>Confirmed</option>--}}
+{{--                <option value="Cancelled" {{ old('status') == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>--}}
+{{--                <option value="Ended" {{ old('status') == 'Ended' ? 'selected' : '' }}>Ended</option>--}}
+{{--            </select>--}}
+            <!-- Show error message for status -->
+            @error('status')
+            <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
         </div>
 
         <!-- Submit Button -->
         <div>
-            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Add Rental</button>
+            <button type="submit" class="bg-orange-500 text-gray-800 hover:text-white font-medium rounded-md px-5 py-3">ADD RENTAL</button>
+            <a href="{{ route('dashboard') }}" class="bg-orange-500 text-gray-800 hover:text-white font-medium rounded-md px-5 py-3">DASHBOARD</a>
         </div>
     </form>
+
 </div>
 
 <script>
@@ -101,3 +109,4 @@
 </script>
 </body>
 </html>
+

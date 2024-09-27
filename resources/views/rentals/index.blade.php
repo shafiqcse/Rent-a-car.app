@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rentals</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body class="bg-gray-100 p-8">
 <div class="container mx-auto max-w-6xl">
-    <h1 class="text-3xl font-bold mb-6 text-center">Rentals</h1>
-    <div class="flex justify-center mb-4">
-        <a href="{{ route('rentals.create') }}" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Add Rental</a>
+    <h1 class="text-3xl font-bold mb-6 text-center">RENTALS</h1>
+    <div class="flex justify-end mb-4">
+        <a href="{{ route('rentals.create') }}" class="bg-orange-500 text-gray-800 hover:text-white font-medium rounded-md px-5 py-3 mr-3">ADD RENTAL</a>
+        <a href="{{ route('dashboard') }}" class="bg-orange-500 text-gray-800 hover:text-white font-medium rounded-md px-5 py-3 ">DASHBOARD</a>
     </div>
     <div class="overflow-x-auto">
         <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
@@ -33,14 +36,15 @@
                     <td class="py-2 px-4 border-b">{{ $rental->car->name }} ({{ $rental->car->brand }})</td>
                     <td class="py-2 px-4 border-b">{{ $rental->start_date }}</td>
                     <td class="py-2 px-4 border-b">{{ $rental->end_date }}</td>
-                    <td class="py-2 px-4 border-b">{{ $rental->total_cost }}</td>
+                    <td class="py-2 px-4 border-b">${{ number_format($rental->total_cost, 2) }}</td>
                     <td class="py-2 px-4 border-b">{{ $rental->status }}</td>
                     <td class="py-2 px-4 border-b">
-                        <a href="{{ route('rentals.edit', $rental->id) }}" class="px-2 py-1 bg-yellow-200 text-yellow-700 rounded hover:bg-yellow-300">Edit</a>
+                        <a href="{{ route('rentals.edit', $rental->id) }}" class="bg-orange-500 text-gray-800 hover:text-white font-medium rounded-md px-3 py-1.5">Edit</a>
+{{--                        <a href="{{ route('rentals.edit', $rental->id) }}" class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded">Show</a>--}}
                         <form action="{{ route('rentals.destroy', $rental->id) }}" method="POST" class="inline-block">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="px-2 py-1 bg-red-200 text-red-700 rounded hover:bg-red-300">Delete</button>
+                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Delete</button>
                         </form>
                     </td>
                 </tr>

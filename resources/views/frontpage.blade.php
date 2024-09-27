@@ -20,8 +20,8 @@
                 </p>
                 <div class="mt-8 flex justify-center md:justify-start space-x-4">
                     <button class="bg-orange-500 text-white px-6 py-3 rounded">
-                        <a class="text-gray-800 hover:text-gray-600" href="{{ url('/allcars') }}">
-                            Cars
+                        <a class="text-gray-800 hover:text-white" href="{{ url('/allcars') }}">
+                            CARS
                         </a>
                     </button>
                     <button class="border border-orange-500 text-orange-500 px-6 py-3 rounded">

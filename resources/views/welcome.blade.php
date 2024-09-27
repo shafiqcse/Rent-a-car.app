@@ -871,24 +871,24 @@
         <a href="/">
             <img loading="lazy" src="{{ asset('storage/images/logos/LOGOtext.png') }}" alt="home car" width="50">
         </a>
-        <div class="flex space-x-8">
-            <a class="text-gray-800 hover:text-gray-600" href="{{ url('/') }}">
+        <div class="flex">
+            <a class="text-gray-800 text-transform: uppercase hover:bg-orange-500 hover:text-white px-5 py-3 rounded" href="{{ url('/') }}">
                 Home
             </a>
             <button>
-                <a class="text-gray-800 hover:text-gray-600" href="{{ url('/allcars') }}">
+                <a class="text-gray-800 text-transform: uppercase hover:bg-orange-500 hover:text-white px-5 py-3 rounded" href="{{ url('/allcars') }}">
                     Cars
                 </a>
             </button>
 
-            <a class="text-gray-800 hover:text-gray-600" href="{{ url('/about') }}">
+            <a class="text-gray-800 text-transform: uppercase hover:bg-orange-500 hover:text-white px-5 py-3 rounded" href="{{ url('/about') }}">
                 About
             </a>
-            <a class="text-gray-800 hover:text-gray-600" href="{{ url('/contact_us') }}">
+            <a class="text-gray-800 text-transform: uppercase hover:bg-orange-500 hover:text-white px-5 py-3 rounded" href="{{ url('/contact_us') }}">
                 Contact Us
             </a>
         </div>
-        <div class="flex space-x-4">
+        <div class="flex space-x-2">
             @if (Route::has('login'))
                 <nav class="-mx-3 flex flex-1 justify-end">
                     @auth
@@ -896,22 +896,22 @@
                             href="{{ url('/dashboard') }}"
                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                         >
-                            Dashboard
+                            <div class="bg-orange-500 text-gray-800 hover:text-white font-medium rounded-md px-5 py-3">DASHBOARD</div>
                         </a>
                     @else
                         <a
                             href="{{ route('login') }}"
-                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-dark dark:hover:text-red-900/80 dark:focus-visible:ring-white"
+                            class="rounded-md px-1 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-dark dark:hover:text-red-900/80 dark:focus-visible:ring-white"
                         >
-                            Log in
+                            <div class="bg-orange-500 text-gray-800 hover:text-white font-medium rounded-md px-5 py-3">Log in</div>
                         </a>
 
                         @if (Route::has('register'))
                             <a
                                 href="{{ route('register') }}"
-                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-dark dark:hover:text-red-900/80 dark:focus-visible:ring-white"
+                                class="rounded-md  py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-dark dark:hover:text-red-900/80 dark:focus-visible:ring-white"
                             >
-                                Register
+                                <div class="bg-orange-500 text-gray-800 hover:text-white font-medium rounded-md px-5 py-3">Register</div>
                             </a>
                         @endif
                     @endauth
